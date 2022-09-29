@@ -1,0 +1,93 @@
+/* Database builder file */
+
+/* Create the tables: */
+
+DROP TABLE year2015;
+create table year2015 (
+	country VARCHAR NOT NULL PRIMARY KEY,
+    region VARCHAR,
+    rank INT NOT NULL,
+    score DOUBLE NOT NULL,
+    standError DOUBLE,
+    economy DOUBLE,
+    family DOUBLE,
+    health DOUBLE,
+    freedom DOUBLE,
+    trust DOUBLE,
+    generosity DOUBLE,
+    dystopia DOUBLE
+);
+
+DROP TABLE year2016;
+create table year2016 (
+	country VARCHAR NOT NULL PRIMARY KEY,
+    region VARCHAR,
+    rank INT NOT NULL,
+    score DOUBLE NOT NULL,
+    lowerConf DOUBLE,
+    upperConf DOUBLE,
+    economy DOUBLE,
+    family DOUBLE,
+    health DOUBLE,
+    freedom DOUBLE,
+    trust DOUBLE,
+    generosity DOUBLE,
+    dystopia DOUBLE
+);
+
+DROP TABLE year2017;
+create table year2017 (
+ 	country VARCHAR NOT NULL PRIMARY KEY,
+    rank INT NOT NULL,
+    score DOUBLE NOT NULL,
+    whiskHigh DOUBLE,
+    whiskLow DOUBLE,
+    economy DOUBLE,
+    family DOUBLE,
+    health DOUBLE,
+    freedom DOUBLE,
+    generosity DOUBLE,
+    trust DOUBLE,
+    dystopia DOUBLE
+);
+
+DROP TABLE year2018;
+create table year2018 (
+    rank INT NOT NULL,
+ 	country VARCHAR NOT NULL PRIMARY KEY,
+    score DOUBLE NOT NULL,
+    economy DOUBLE,
+    family DOUBLE,
+    health DOUBLE,
+    freedom DOUBLE,
+    generosity DOUBLE,
+    trust DOUBLE
+);
+
+DROP TABLE year2019;
+create table year2019 (
+    rank INT NOT NULL,
+ 	country VARCHAR NOT NULL PRIMARY KEY,
+    score DOUBLE NOT NULL,
+    economy DOUBLE,
+    family DOUBLE,
+    health DOUBLE,
+    freedom DOUBLE,
+    generosity DOUBLE,
+    trust DOUBLE
+);
+
+/* These files use the "," delimiter. */
+
+.separator ","
+
+/* Import the data files! */
+
+.import data/archive/2015.csv year2015
+.import data/archive/2016.csv year2016
+.import data/archive/2017.csv year2017
+.import data/archive/2018.csv year2018
+.import data/archive/2019.csv year2019
+
+/* How to run this builder: */
+/* cat builderFile.txt | sqlite3 happinessDB.sqlite3 */
